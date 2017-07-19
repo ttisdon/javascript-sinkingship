@@ -3,6 +3,19 @@
  */
 
 /*
+Example of a constructor
+ */
+function Apple(x, y, color, score) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.score = score;
+}
+
+var apple1 = new Apple(5, 4, "brown", 475);
+var apple2 = new Apple(49, 42, "yella", 884);
+
+/*
 Returns a predetermined name with the 'Captain' title
 Uses nested functions
  */
@@ -32,9 +45,8 @@ Prints the captain result when called
 function printCaptainTest() {
     console.log(
         printFirstAndLastName(nameThatWillBePrinted) + " is a fancy foe, but " + captainName() + " is far superior!"
-    );
+    )
 }
-
 
 
 /*
@@ -54,7 +66,7 @@ function printReturnFunctionTest() {
         returnFunctionObject(function () {
             return "I'm the result of returnFunctionObject. Deal with it."
         })
-    );
+    )
 }
 
 
@@ -69,11 +81,14 @@ var stringifyObject = {
         and: "toes"
     },
     number: 10,
-    johnnyFiveStatus: "alive"
+    johnnyFiveStatus: "alive",
+    stringifyMeFunctiont: function () {
+        return "Stringify Me Pls"
+    }
 };
 
 function printStringify(){
-    console.log("The stringified result: \n" + JSON.stringify(stringifyObject, null, 5))
+    console.log("The stringified result: \n" + JSON.stringify(stringifyObject, null, 2))
 }
 
 
@@ -89,6 +104,71 @@ function memoryHoistingTest() {
 }
 
 
+/*
+Returnable objects have access to .call and other methods
+ */
+function returnableObject(object) {
+    return object;
+}
+
+/*
+Testing the scope of the 'this' keyword
+ */
+function globalTest() {
+    console.log('from the global', this);
+    function sub(){
+        console.log('from the sub', this)
+    }
+    sub();
+}
 
 
+/*
+Testing prototyping
+__proto__, look that up for a better understanding
+ */
+var prototypeApple = {
+    color: "red",
+    width: 200,
+    height: 150
+};
+
+var eatPrototypeApple = {
+  eat: function () {},
+  toss: function(){},
+  nibble: function () {}
+};
+
+/*
+The array will have different functions available in the __proto__ compared to the object
+ */
+var prototypeArray = [
+    "fart",
+    "real",
+    "hard",
+    13
+];
+
+
+/*
+Constructors with prototypes
+ */
+
+function ConstructApple() {
+
+    // this.constructColor = "red";
+    // this.constructWidth = 300;
+    // this.constructHeight = 250;
+    // console.log(this);
+}
+
+ConstructApple.prototype = {
+  eat: function () {return "EAT ALL THE THINGS"},
+  throw: function () {return "THROW ALL THE THINGS"},
+  nibble: function() {return "NIBBLE ALL THE THINGS"}
+};
+
+var crapple1 = new ConstructApple();
+var crapple2 = new ConstructApple();
+var crapple3 = new ConstructApple();
 
