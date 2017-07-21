@@ -150,6 +150,7 @@ var prototypeArray = [
 ];
 
 
+
 /*
 Constructors with prototypes
  */
@@ -171,4 +172,74 @@ ConstructApple.prototype = {
 var crapple1 = new ConstructApple();
 var crapple2 = new ConstructApple();
 var crapple3 = new ConstructApple();
+
+
+
+/*
+Conditional functions
+ */
+function conditional(){
+    if(5 > 2){
+        return "This will be true";
+    }
+}
+
+var check = "cake";
+
+
+if (check === "cake" || check === "cupcake") {
+
+    score = 1;
+    console.log("Correct your score is now " + 1);
+} else {
+    score = 0;
+}
+
+
+/*
+For loops
+ */
+var loopArray = [];
+
+/*
+Incremental push
+ */
+for (var i = 0; i < 10; i++){
+    loopArray.push(i)
+}
+
+/*
+Decremental loop
+ */
+for (var n = 10; n > 0; n-- ) {
+    loopArray.push(n);
+}
+
+var helloArray = [
+    "hello",
+    "my baby",
+    "hello",
+    "my darling"
+];
+
+for (var h = 0; h < helloArray.length; h++) {
+    console.log(helloArray[h] + " is in the " + h + " index.");
+}
+
+/*
+An object with key:value pairs
+ */
+var colorObj = {color : "red", width: 200, height: 800};
+
+/*
+Gets colorObjs keys and stores them in an array
+ */
+var objArray = Object.keys(colorObj);
+
+/*
+Prints out the values of colorObj using objArray for the keys
+ */
+for(var o = 0; o < objArray.length; o++){
+    console.log(colorObj[objArray[o]]);
+}
 
