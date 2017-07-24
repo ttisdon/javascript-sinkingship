@@ -157,10 +157,10 @@ Constructors with prototypes
 
 function ConstructApple() {
 
-    // this.constructColor = "red";
-    // this.constructWidth = 300;
-    // this.constructHeight = 250;
-    // console.log(this);
+    this.constructColor = "red";
+    this.constructWidth = 300;
+    this.constructHeight = 250;
+    console.log(this);
 }
 
 ConstructApple.prototype = {
@@ -234,12 +234,67 @@ var colorObj = {color : "red", width: 200, height: 800};
 /*
 Gets colorObjs keys and stores them in an array
  */
-var objArray = Object.keys(colorObj);
+var objKeyArray = Object.keys(colorObj);
 
 /*
-Prints out the values of colorObj using objArray for the keys
+Prints out the values of colorObj using objKeyArray for the keys
  */
-for(var o = 0; o < objArray.length; o++){
-    console.log(colorObj[objArray[o]]);
+for(var o = 0; o < objKeyArray.length; o++){
+    console.log(colorObj[objKeyArray[o]]);
 }
 
+
+/*
+Function used in the eventListener and onClick tests
+ */
+var alertFunction = function () {
+    alert('YA DUN GOOD CLICKIN DERE!')
+};
+
+/*
+Finds the element with the id 'eventClick' and on click an alert appears that says "TEST ALL THE THINGS BRUH"
+ */
+document.getElementById('eventClick').onclick = function () {
+    alert("SHHIIIIAAAAT YA CLICKED!")
+};
+
+/*
+Listens for the onClick function for the listenerClick button then alerts with DIS DAT LISTENER when clicked
+addEventListener is faster than regular onClick
+ */
+document.getElementById('listenerClick').addEventListener('click', alertFunction);
+document.getElementById('listenerClick').addEventListener('click', function() {
+    alert("Take that and rewind it back!")
+});
+document.getElementById('removeAlerts').addEventListener('click', function() {
+    alert("CLICK ON DAT IS OH SO FRESH AND OH SO MOTHERFUCKIN CLEAN");
+    document.getElementById('listenerClick').removeEventListener('click', alertFunction)
+});
+
+
+/*
+Testing with this keyword
+ */
+
+var thisObj = {
+    name : "Totes",
+    name2: "MaGotes",
+    inner: {
+        innerName: "Celery",
+        innerName2: "Man",
+        innerThis: function () {
+            console.log(this)
+        }
+    },
+    outerThis: function() {
+        console.log(this)
+    }
+};
+
+thisObj.inner.innerThis();
+thisObj.outerThis();
+
+document.getElementById('thisButton').addEventListener('click', function(){
+   console.log(this);
+   console.dir(this);
+});
