@@ -247,14 +247,14 @@ for(var o = 0; o < objKeyArray.length; o++){
 /*
 Function used in the eventListener and onClick tests
  */
-var alertFunction = function () {
+var alertFunction = function() {
     alert('YA DUN GOOD CLICKIN DERE!')
 };
 
 /*
 Finds the element with the id 'eventClick' and on click an alert appears that says "TEST ALL THE THINGS BRUH"
  */
-document.getElementById('eventClick').onclick = function () {
+document.getElementById('eventClick').onclick = function() {
     alert("SHHIIIIAAAAT YA CLICKED!")
 };
 
@@ -294,7 +294,40 @@ var thisObj = {
 thisObj.inner.innerThis();
 thisObj.outerThis();
 
-document.getElementById('thisButton').addEventListener('click', function(){
+document.getElementById('thisButton').addEventListener('click', function() {
    console.log(this);
    console.dir(this);
 });
+
+
+document.getElementById('changeInnerText').addEventListener('click', function() {
+    alert('Changing that innerText of test-id to WHY YOU CHANGE ME BREM!');
+    document.getElementById('test-id').innerText = 'WHY YOU CHANGE ME BREM';
+});
+
+document.getElementById('changeInnerHTML').addEventListener('click', function() {
+    alert('Changing that innerHTML of test-id to have a WING SPAN');
+    document.getElementById('test-id').innerHTML = "<span> WINGSPAN </span> GET IT!";
+});
+
+document.getElementById('cssTextChange').addEventListener('click', function() {
+    alert('Changing that innerText of test-id\'s span to CSS IS THE CS BEST AND listenerClick!');
+    document.querySelectorAll('#test-id > span')[0].innerText = 'CSS IS THE CS BEST!';
+    document.getElementById('listenerClick').value = 'YA GOT ME TOO BRUM!';
+});
+
+
+var arraySelect = document.getElementsByTagName('select');
+
+var element = document.getElementById('content');
+
+function dropDownStyles() {
+    var style = this.id;
+    var value = this.value;
+
+    element.style[style] = value;
+}
+
+for(var a = 0; a < arraySelect.length; a++) {
+    arraySelect[a].addEventListener('change', dropDownStyles)
+}
